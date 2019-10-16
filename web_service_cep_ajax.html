@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WEB SERVICES</title>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        function Consultar(){
+            var C = cep.value;
+            var URL = "https://api.postmon.com.br/v1/cep/" + C;
+            var dados = "";
+
+            $.ajax({
+                type: "GET",
+                url: URL,
+                data: dados,
+                success: function(RESPOSTA)
+                {
+                    estado.value = RESPOSTA.estado;
+                    cidade.value = RESPOSTA.cidade;
+                    bairro.value = RESPOSTA.bairro;
+                    logradouro.value = RESPOSTA.logradouro;
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    CEP: <input id="cep" type="number">
+    <input type="button" onclick="Consultar();"><br><br>
+    Estado:
+    <input id="estado" type="text"><br><br>
+    Cidade:
+    <input id="cidade" type="text"><br><br>
+    Bairro:
+    <input id="bairro" type="text"><br><br>
+    Logradouro:
+    <input id="logradouro" type="text"><br><br>
+    <!--
+        SITE: https://postmon.com.br/
+    -->
+</body>
+</html>
